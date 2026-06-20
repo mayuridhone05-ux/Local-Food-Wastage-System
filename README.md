@@ -1,72 +1,110 @@
-#🥗 Local Food Wastage Management System#
+## 🥗 Local Food Wastage Management System
 
-A centralized, interactive platform built with Python and Streamlit to connect food providers with receivers, aimed at reducing food wastage and combating food insecurity through data-driven distribution.
+An end-to-end data analytics and web application built to combat food insecurity and reduce food wastage by connecting surplus food providers directly with NGOs and receivers.
 
-🔴 👉 CLICK HERE TO VIEW THE LIVE STREAMLIT APP 👈 (Link to be added after deployment)
+🔴 👉 CLICK HERE TO VIEW THE LIVE INTERACTIVE DASHBOARD 👈
 
-📌 Problem Statement
+📌 The Business Problem
 
-Food wastage is a critical global issue. While restaurants and households discard surplus food, numerous communities struggle with food insecurity. This project addresses this gap by developing a localized management system that tracks surplus food listings, maps provider locations, and monitors distribution claims.
+Food wastage is a critical global issue. While restaurants, supermarkets, and households discard massive amounts of surplus food daily, numerous communities struggle with severe food insecurity.
 
-🚀 Key Features & Deliverables
+This project addresses this gap by developing a Local Food Wastage Management System—a centralized, data-driven platform where surplus food is tracked, provider locations are mapped, and distribution claims are monitored in real-time.
 
-1. Interactive Streamlit Web Application
+🛠️ Project Architecture & Features
 
-Dynamic Filtering: Users can filter food availability by City, Provider Type, Meal Type, and Food Category.
+This project showcases a full-stack data workflow, from raw CSV data to an in-memory SQL database, culminating in an interactive Streamlit frontend.
 
-KPI Scorecards: Real-time metrics tracking total providers, active food listings, and claim completion percentages.
+1. Interactive Streamlit Dashboard (app.py)
 
-Provider Contact Integration: Generates accessible contact tables to facilitate direct coordination between NGOs and food providers.
+Dynamic Slicers: Users can instantly filter the entire database by Location, Provider Type, Meal Type, and Food Type.
 
-2. In-Memory SQL Analytics
+Live KPI Tracking: Real-time metrics tracking total active providers, total food quantity available, and real-time claim completion percentages.
 
-Built a transient SQLite3 database to process and analyze 4 distinct datasets (providers, receivers, food_listings, claims).
+Provider Contact Integration: Generates accessible contact tables to facilitate direct, offline coordination between NGOs and food providers.
 
-Executed 17 complex analytical queries to identify trends, such as:
+2. In-Memory SQL Analytics (sql_analysis.py)
+
+Designed a transient SQLite3 database to process and join 4 distinct datasets.
+
+Engineered 17 complex analytical queries to identify logistical trends, including:
 
 Which provider types contribute the highest volume of food?
 
 Which meal types carry the highest "wastage risk" (most pending claims)?
 
-What is the completion vs. cancellation rate of food claims?
+What is the completion vs. cancellation rate of distribution requests?
 
-3. Exploratory Data Analysis (EDA)
+Built an interactive "SQL Query Explorer" directly into the frontend, allowing users to run these queries live with the click of a button.
 
-Generated automated visualizations using matplotlib and seaborn.
+3. Exploratory Data Analysis (eda_analysis.py)
 
-Analyzed provider distributions, top receiver claims, and generated heatmaps of Food Type vs. Meal Type quantities.
+Generated automated, programmatic data visualizations using matplotlib and seaborn.
 
-🛠️ Data Architecture
+Mapped Provider & Receiver distributions, generated Food Type vs. Meal Type quantity heatmaps, and tracked claim status breakdowns.
 
-The system aggregates data from 4 core tables:
+🗄️ Data Schema
 
-Providers: Details of restaurants, grocery stores, and supermarkets.
+The system aggregates and relates data across 4 core tables:
 
-Receivers: Details of NGOs, community centers, and individuals.
+providers_data.csv: Details of restaurants, grocery stores, and supermarkets. (Key: Provider_ID)
 
-Food Listings: Quantities, expiry dates, and categories of available food.
+receivers_data.csv: Details of NGOs, community centers, and individuals. (Key: Receiver_ID)
 
-Claims: Tracking the status (Pending/Completed/Cancelled) of distribution requests.
+food_listings_data.csv: Quantities, expiry dates, and categories of available food. (Foreign Key: Provider_ID)
 
-💡 Business Insights Generated
+claims_data.csv: Tracking the status (Pending/Completed/Cancelled) of distribution requests. (Foreign Keys: Food_ID, Receiver_ID)
 
-🏆 Top Provider Type: Restaurants donate the most food (6,923 units).
+💡 Strategic Business Insights
 
-🥗 Highest Availability: Vegetarian items and Breakfast meals have the highest listing frequency.
+Based on the EDA and SQL querying, the following data-driven insights were discovered:
 
-⚠️ Wastage Risk: Lunch items experience the highest volume of Pending claims (89 pending), highlighting a need for better midday distribution logistics.
+🏆 Top Contributor: Restaurants dominate the platform, donating the most food overall (6,923 units).
 
-🤝 Distribution Gap: With nearly 33.6% of claims resulting in cancellation, there is a clear recommendation to automate coordination alerts between NGOs and providers.
+🥗 Highest Availability: Vegetarian items and Breakfast meals possess the highest listing frequency across the application.
 
-💻 How to Run Locally
+🤝 Top Receivers: Non-Governmental Organizations (NGOs) are the most active claimers, successfully claiming 272 orders.
 
-Clone this repository to your local machine.
+⚠️ Wastage Risk Identification: Lunch items experience the highest volume of Pending claims (89 pending), highlighting a critical need for better midday distribution logistics.
 
-Ensure you have Python installed, then install the dependencies:
+📉 Distribution Gap: With 33.6% of claims resulting in cancellation, there is a clear business recommendation to automate coordination alerts/SMS notifications between NGOs and providers before food expires.
+
+💻 Repository Structure
+
+├── data/
+│   ├── providers_data.csv
+│   ├── receivers_data.csv
+│   ├── food_listings_data.csv
+│   └── claims_data.csv
+├── app.py                  # Main Streamlit web application
+├── sql_analysis.py         # 17 Advanced SQL queries & executions
+├── eda_analysis.py         # Automated Python visualization scripts
+├── requirements.txt        # Deployment dependencies
+└── README.md               # Project documentation
+
+
+
+🚀 How to Run Locally
+
+To run this project on your local machine:
+
+Clone the repository:
+
+git clone https://github.com/your-username/Local-Food-Wastage-System.git
+
+Install the required libraries:
 
 pip install -r requirements.txt
 
 
-Run the Streamlit application:
+
+Run the standalone Analysis Scripts (Optional):
+
+python sql_analysis.py
+python eda_analysis.py
+
+
+
+Launch the Streamlit Web Application:
 
 streamlit run app.py
+
