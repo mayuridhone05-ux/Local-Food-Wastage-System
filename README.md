@@ -1,7 +1,7 @@
 # 🥗 Local Food Wastage Management System
 > An end-to-end data analytics and web application built to combat food insecurity and reduce food wastage by connecting surplus food providers directly with NGOs and receivers.
 > 
-### 📍 ** [LIVE INTERACTIVE DASHBOARD](https://local-food-wastage-system-drkcv2fgcpgpvaug8nb6vt.streamlit.app/)**
+### 📍 [STREAMLIT DASHBOARD](https://local-food-wastage-system-drkcv2fgcpgpvaug8nb6vt.streamlit.app/)
 ## 📌 The Business Problem
 Food wastage is a critical global issue. While restaurants, supermarkets, and households discard massive amounts of surplus food daily, numerous communities struggle with severe food insecurity.
 This project addresses this gap by developing a **Local Food Wastage Management System**—a centralized, data-driven platform where surplus food is tracked, provider locations are mapped, and distribution claims are monitored in real-time.
