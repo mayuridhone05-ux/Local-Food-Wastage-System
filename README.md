@@ -1,4 +1,4 @@
-#🥗 Local Food Wastage Management System
+#🥗 Local Food Wastage Management System#
 
 A centralized, interactive platform built with Python and Streamlit to connect food providers with receivers, aimed at reducing food wastage and combating food insecurity through data-driven distribution.
 
